@@ -1,62 +1,100 @@
-# Laptop Price Predictor 💻📊
+# 💻 Laptop Price Predictor
 
-## Table of Contents  
-- [Project Overview](#project-overview)  
-- [Features](#features)  
-- [Dataset](#dataset)  
-- [Technologies Used](#technologies-used)  
-- [Modeling](#modeling)  
-- [Results](#results)  
-- [How to Run](#how-to-run)  
-- [License](#license)  
+A machine learning-powered web application that predicts laptop prices based on specifications like brand, processor, RAM, storage, and display features.
 
-## Project Overview  
-This project implements a machine learning model to predict laptop prices based on features such as brand, processor type, RAM, storage, and more. By leveraging data preprocessing and feature engineering, this model offers valuable insights into the pricing of laptops, helping users make informed purchasing decisions.
+## 🚀 Features
 
-## Features  
-- Predict laptop prices based on key features including brand, processor, RAM, storage, and display size.  
-- Data preprocessing, feature scaling, and encoding of categorical variables for improved accuracy.  
-- Hyperparameter tuning and model selection using algorithms such as Linear Regression, Random Forest, and Gradient Boosting.  
-- Flask-based web application for easy deployment and interaction.  
+- **Interactive Web Interface**: User-friendly Streamlit app with organized input sections
+- **Comprehensive Specifications**: Predict prices based on 12+ laptop features including:
+  - Brand and laptop type
+  - RAM, storage (HDD/SSD), and processor
+  - Display specifications (size, resolution, touchscreen, IPS)
+  - Graphics card and operating system
+- **Real-time Predictions**: Instant price estimates with formatted currency display
+- **Responsive Design**: Clean two-column layout for better user experience
 
-## Dataset  
-The dataset consists of multiple attributes representing laptops and their prices:  
-- **Columns:** Name, Company, Year, Price, Kms_Driven, Fuel_Type.  
-- The dataset includes both numerical and categorical features, and it has been preprocessed to handle missing values and outliers.
+## 📊 Model Features
 
-## Technologies Used  
-- **Languages:** Python  
-- **Libraries:** Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn, Pickle  
-- **Frameworks:** Flask  
-- **Tools:** Jupyter Notebook, Google Colab  
+- **Advanced Feature Engineering**: Includes PPI (pixels per inch) calculation for display quality
+- **Categorical Encoding**: Handles brand names, processor types, and OS variations
+- **Logarithmic Transformation**: Uses exponential conversion for accurate price predictions  
 
-## Modeling  
-- **Data Preprocessing:**  
-  - Handled missing values and performed feature scaling and encoding.  
-  - Applied techniques like outlier detection and transformation for improved model performance.  
-- **Model Selection:**  
-  - Compared and evaluated various machine learning algorithms:  
-    - Linear Regression  
-    - Random Forest  
-    - Gradient Boosting  
-  - Used cross-validation and hyperparameter tuning to optimize the models.  
-- **Evaluation Metrics:**  
-  - R² Score to measure the predictive accuracy of the models.  
+## 📁 Dataset  
+The dataset contains laptop specifications and their corresponding prices with features including:
+- **Company**: Brand names (Dell, HP, Apple, etc.)
+- **TypeName**: Laptop categories (Gaming, Ultrabook, Workstation, etc.)
+- **RAM**: Memory capacity (2GB to 64GB)
+- **Weight**: Physical weight of the laptop
+- **Display**: Screen size, resolution, touchscreen, and IPS capabilities
+- **Processor**: CPU brand and specifications
+- **Storage**: HDD and SSD capacities
+- **Graphics**: GPU brand and type
+- **Operating System**: Windows, macOS, Linux variants
 
-## Results  
-- Achieved an **R² score of 85%**, indicating strong model accuracy.  
-- Identified key factors influencing laptop prices, such as brand, processor, and storage capacity.  
+## 🛠️ Technologies Used  
+- **Language**: Python 3.x
+- **Web Framework**: Streamlit
+- **ML Libraries**: Scikit-learn, NumPy, Pandas
+- **Model Persistence**: Pickle
+- **Development**: Jupyter Notebook  
 
-## How to Run  
-1. Clone the repository:  
-   ```bash  
-   git clone https://github.com/your-username/laptop-price-predictor.git  
+## 🤖 Model Architecture
+
+The prediction pipeline includes:
+- **Feature Engineering**: PPI calculation from screen resolution and size
+- **Categorical Encoding**: Brand, processor, and OS encoding
+- **Preprocessing Pipeline**: Integrated scaling and transformation
+- **Model**: Trained regression model with logarithmic price transformation
+
+## 📈 Model Performance
+
+- Trained on comprehensive laptop dataset with 12 key features
+- Uses exponential transformation for accurate price scaling
+- Handles diverse laptop categories from budget to high-end gaming machines
+
+## 🚀 Quick Start
+
+### Prerequisites
+```bash
+pip install streamlit numpy pickle-mixin
+```
+
+### Running the Application
+
+1. **Clone the repository**:
+   ```bash
+   git clone <repository-url>
    cd laptop-price-predictor
-    
-2. Install the required dependencies:
-```bash
-pip install -r requirements.txt
+   ```
 
-3. Run the Flask app:
-```bash
-python app.py  
+2. **Ensure model files are present**:
+   - `pipe.pkl` (trained model pipeline)
+   - `laptop.pkl` (dataset for dropdown options)
+
+3. **Launch the Streamlit app**:
+   ```bash
+   streamlit run app.py
+   ```
+
+4. **Open your browser** to `http://localhost:8501`
+
+## 💡 Usage
+
+1. Select your laptop specifications using the interactive form
+2. Choose from organized categories:
+   - **Basic Specs**: Brand, type, RAM, weight, CPU, OS
+   - **Display & Storage**: Screen features, resolution, storage options, GPU
+3. Click "🔮 Predict Price" to get an instant price estimate
+4. View the formatted price prediction with currency formatting
+
+## 📁 Project Structure
+
+```
+laptop-price-predictor/
+├── app.py                          # Streamlit web application
+├── pipe.pkl                        # Trained model pipeline
+├── laptop.pkl                      # Dataset for UI options
+├── laptop_data.csv                 # Raw dataset
+├── Laptop_Price_Predictor.ipynb    # Model training notebook
+└── README.md                       # Project documentation
+```  
